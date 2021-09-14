@@ -10,15 +10,15 @@ if (localStorage.getItem('books') === null) {
   books = JSON.parse(localStorage.getItem('books'));
 }
 
-const ul = document.createElement('ul')
+const ul = document.createElement('ul');
 ul.setAttribute('id', 'book-list');
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
   listItem.className = 'list-item';
   const paraTitle = document.createElement('p');
-  const paraAuthor = document.createElement('p')
-  const btnRemove = document.createElement('button')
+  const paraAuthor = document.createElement('p');
+  const btnRemove = document.createElement('button');
 
   paraTitle.textContent = title;
   paraAuthor.textContent = author;
@@ -28,12 +28,9 @@ function createBook({ title, author }) {
 
   btnRemove.setAttribute('id', 'btn-rm');
 
-
   ul.appendChild(listItem);
   bookContainer.appendChild(ul);
-
 }
-
 
 books.forEach(createBook);
 
@@ -50,8 +47,8 @@ addBtn.onclick = function (e) {
   const newBook = addBook(titleInput.value, authorInput.value);
 
   createBook(newBook);
-  titleInput.value = ''
-  authorInput.value = ''
+  titleInput.value = '';
+  authorInput.value = '';
 };
 
 function deleteBook(el) {
@@ -63,6 +60,4 @@ function deleteBook(el) {
 ul.addEventListener('click', (e) => {
   const removeItem = e.target;
   deleteBook(removeItem);
-
 });
-
