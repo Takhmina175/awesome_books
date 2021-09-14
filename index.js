@@ -52,12 +52,18 @@ addBtn.onclick = function (e) {
 };
 
 function deleteBook(el) {
-  if (el.classList.contains('delete')) {
-    el.parentElement.remove();
-  }
+  books = books.filter((_, i) => i !== el);
+  localStorage.setItem('books', JSON.stringify(books));
 }
 
 ul.addEventListener('click', (e) => {
-  const removeItem = e.target;
-  deleteBook(removeItem);
+  const classes = e.target.className;
+  const classesArray = classes.split(' ');
+  const item2BeRemoved = e.target.parentElement;
+  const nodes = Array.from(ul.children);
+  const index = nodes.indexOf(item2BeRemoved);
+  if (classesArray.indexOf('delete') !== -1) {
+    deleteBook(index);
+    location.reload();
+  }
 });
