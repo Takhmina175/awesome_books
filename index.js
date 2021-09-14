@@ -64,6 +64,6 @@ ul.addEventListener('click', (e) => {
   const index = nodes.indexOf(item2BeRemoved);
   if (classesArray.indexOf('delete') !== -1) {
     deleteBook(index);
-    location.reload();
+    location.reload(); // eslint-disable-line no-restricted-globals
   }
 });
