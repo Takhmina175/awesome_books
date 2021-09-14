@@ -10,27 +10,30 @@ if (localStorage.getItem('books') === null) {
   books = JSON.parse(localStorage.getItem('books'));
 }
 
+const ul = document.createElement('ul')
+ul.setAttribute('id', 'book-list');
+
 function createBook({ title, author }) {
-  const bookDiv = document.createElement('div');
-  const ul = document.createElement('ul')
-  const listItemTitle = document.createElement('li');
-  const listItemAuthor = document.createElement("li");
+  const listItem = document.createElement('li');
+  listItem.className = 'list-item';
+  const paraTitle = document.createElement('p');
+  const paraAuthor = document.createElement('p')
   const btnRemove = document.createElement('button')
 
-  listItemTitle.textContent = title;
-  listItemAuthor.textContent = author;
+  paraTitle.textContent = title;
+  paraAuthor.textContent = author;
   btnRemove.textContent = 'Remove';
+  btnRemove.className = 'delete';
+  listItem.append(paraTitle, paraAuthor, btnRemove);
 
-  ul.setAttribute('id', 'book-list');
   btnRemove.setAttribute('id', 'btn-rm');
-  bookDiv.setAttribute('class', 'delete');
 
 
-  ul.append(listItemTitle, listItemAuthor, btnRemove);
-  bookDiv.appendChild(ul)
-  bookContainer.appendChild(bookDiv);
+  ul.appendChild(listItem);
+  bookContainer.appendChild(ul);
 
 }
+
 
 books.forEach(createBook);
 
@@ -51,16 +54,15 @@ addBtn.onclick = function (e) {
   authorInput.value = ''
 };
 
-const bookList = document.querySelector('#book-list');
-bookList.addEventListener("click", (e) => {
-  deleteBook(e.target)
-});
-
-function deleteBook(el){
-  if(el.classList.contains('btn-rm')){
-    el.parentElement.parentElement.remove();
-    
+function deleteBook(el) {
+  if (el.classList.contains('delete')) {
+    el.parentElement.remove();
   }
 }
 
+ul.addEventListener('click', (e) => {
+  const removeItem = e.target;
+  deleteBook(removeItem);
+
+});
 
