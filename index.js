@@ -51,18 +51,20 @@ addBtn.onclick = function (e) {
   titleInput.focus();
 };
 
-function deleteBook(element) {
-  const bookArray = renderBooks();
-  if (element.classList.contains('delete')) {
-    const removeItem = element.parentElement;
-    bookArray.splice(removeItem, 1);
-    element.parentElement.remove();
-    localStorage.setItem('books', JSON.stringify(bookArray));
-  }
+function deleteBook(el) {
+  books = books.filter((_, i) => i !== el);
+  localStorage.setItem('books', JSON.stringify(books));
 }
 
 ul.addEventListener('click', (e) => {
-  const removeItem = e.target;
-  deleteBook(removeItem);
+  const classes = e.target.className;
+  const classesArray = classes.split(' ');
+  const item2BeRemoved = e.target.parentElement;
+  const nodes = Array.from(ul.children);
+  const index = nodes.indexOf(item2BeRemoved);
+  if (classesArray.indexOf('delete') !== -1) {
+    deleteBook(index);
+    location.reload(); // eslint-disable-line no-restricted-globals
+  }
 });
 
