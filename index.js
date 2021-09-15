@@ -3,11 +3,10 @@ const authorInput = document.querySelector('#author');
 const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
 
-let books = [];
-if (localStorage.getItem('books') === null) {
-  books = [];
-} else {
-  books = JSON.parse(localStorage.getItem('books'));
+// let books = [];
+function renderBooks() {
+  const books = JSON.parse(localStorage.getItem('books') || '[]');
+  return books;
 }
 
 const ul = document.createElement('ul');
@@ -32,12 +31,12 @@ function createBook({ title, author }) {
   bookContainer.appendChild(ul);
 }
 
-books.forEach(createBook);
+renderBooks().forEach(createBook);
 
 function addBook(title, author) {
-  books.push({ title, author });
-  localStorage.setItem('books', JSON.stringify(books));
-
+  const bookArray = renderBooks();
+  bookArray.push({ title, author });
+  localStorage.setItem('books', JSON.stringify(bookArray));
   return { title, author };
 }
 
@@ -49,11 +48,16 @@ addBtn.onclick = function (e) {
   createBook(newBook);
   titleInput.value = '';
   authorInput.value = '';
+  titleInput.focus();
 };
 
-function deleteBook(el) {
-  if (el.classList.contains('delete')) {
-    el.parentElement.remove();
+function deleteBook(element) {
+  const bookArray = renderBooks();
+  if (element.classList.contains('delete')) {
+    const removeItem = element.parentElement;
+    bookArray.splice(removeItem, 1);
+    element.parentElement.remove();
+    localStorage.setItem('books', JSON.stringify(bookArray));
   }
 }
 
@@ -61,3 +65,4 @@ ul.addEventListener('click', (e) => {
   const removeItem = e.target;
   deleteBook(removeItem);
 });
+
