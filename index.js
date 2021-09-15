@@ -1,60 +1,22 @@
+const library = new Library();// eslint-disable-line no-undef
+const dom = new Dom();// eslint-disable-line no-undef
+
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
-const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
-
-let books = [];
-if (localStorage.getItem('books') === null) {
-  books = [];
-} else {
-  books = JSON.parse(localStorage.getItem('books'));
-}
 
 const ul = document.createElement('ul');
 ul.setAttribute('id', 'book-list');
 
-function createBook({ title, author }) {
-  const listItem = document.createElement('li');
-  listItem.className = 'list-item';
-  const paraTitle = document.createElement('p');
-  const paraAuthor = document.createElement('p');
-  const btnRemove = document.createElement('button');
+library.renderBooks().forEach(dom.createBook);
 
-  paraTitle.textContent = title;
-  paraAuthor.textContent = author;
-  btnRemove.textContent = 'Remove';
-  btnRemove.className = 'delete';
-  listItem.append(paraTitle, paraAuthor, btnRemove);
-
-  btnRemove.setAttribute('id', 'btn-rm');
-
-  ul.appendChild(listItem);
-  bookContainer.appendChild(ul);
-}
-
-books.forEach(createBook);
-
-function addBook(title, author) {
-  books.push({ title, author });
-  localStorage.setItem('books', JSON.stringify(books));
-
-  return { title, author };
-}
-
-addBtn.onclick = function (e) {
+addBtn.onclick = (e) => {
   e.preventDefault();
-
-  const newBook = addBook(titleInput.value, authorInput.value);
-
-  createBook(newBook);
+  const newBook = library.addBook(titleInput.value, authorInput.value);
+  dom.createBook(newBook);
   titleInput.value = '';
   authorInput.value = '';
 };
-
-function deleteBook(el) {
-  books = books.filter((_, i) => i !== el);
-  localStorage.setItem('books', JSON.stringify(books));
-}
 
 ul.addEventListener('click', (e) => {
   const classes = e.target.className;
@@ -63,7 +25,7 @@ ul.addEventListener('click', (e) => {
   const nodes = Array.from(ul.children);
   const index = nodes.indexOf(item2BeRemoved);
   if (classesArray.indexOf('delete') !== -1) {
-    deleteBook(index);
+    library.deleteBook(index);
     location.reload(); // eslint-disable-line no-restricted-globals
   }
 });
