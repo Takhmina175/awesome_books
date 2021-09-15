@@ -1,7 +1,7 @@
 class Dom {// eslint-disable-line no-unused-vars
   constructor() {
     this.bookContainer = document.querySelector('#ptext');
-    this.ul = document.querySelector('#book-list');
+    this.bookList = document.querySelector('#book-list');
   }
 
   createBook({ title, author }) {
@@ -19,7 +19,7 @@ class Dom {// eslint-disable-line no-unused-vars
 
     btnRemove.setAttribute('id', 'btn-rm');
 
-    this.ul.appendChild(listItem);
-    this.bookContainer.appendChild(this.ul);
+    this.bookList.appendChild(listItem);
+    this.bookContainer.appendChild(this.bookList);
   }
 }

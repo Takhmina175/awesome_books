@@ -1,12 +1,12 @@
-const library = new Library();// eslint-disable-line no-undef
-const dom = new Dom();// eslint-disable-line no-undef
+const library = new Library(); // eslint-disable-line no-undef
+const dom = new Dom(); // eslint-disable-line no-undef
 
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const addBtn = document.getElementById('add-btn');
+//const bookContainer = document.querySelector('#ptext');
 
-const ul = document.createElement('ul');
-ul.setAttribute('id', 'book-list');
+const ul = document.querySelector('#book-list');
 
 library.renderBooks().forEach(dom.createBook);
 

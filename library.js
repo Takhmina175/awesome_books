@@ -1,4 +1,4 @@
-class Library {// eslint-disable-line no-unused-vars
+class Library { // eslint-disable-line no-unused-vars
   constructor() {
     this.books = [];
     this.books = JSON.parse(localStorage.getItem('books')) || [];
@@ -10,13 +10,15 @@ class Library {// eslint-disable-line no-unused-vars
   }
 
   addBook(title, author) {
-    this.books.push({ title, author });
-    localStorage.setItem('books', JSON.stringify(this.books));
+    const bookArray = this.renderBooks();
+    bookArray.push({ title, author });
+    localStorage.setItem('books', JSON.stringify(bookArray));
     return { title, author };
   }
 
   deleteBook(el) {
-    this.books = this.books.filter((_, i) => i !== el);
-    localStorage.setItem('books', JSON.stringify(this.books));
+    const bookArray = this.renderBooks();
+    const newArray = bookArray.filter((_, i) => i !== el);
+    localStorage.setItem('books', JSON.stringify(newArray));
   }
 }
