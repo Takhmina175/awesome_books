@@ -20,6 +20,8 @@
 
 To run this project you only need to open the index.html file in a web browser
 
+[Live Demo](https://raw.githack.com/Takhmina175/awesome_books/main/index.html) :point_left:
+
 ## Authors
 
 👤 **Qoosim AbdulGhaniyy**
