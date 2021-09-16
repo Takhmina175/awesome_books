@@ -4,13 +4,17 @@
   box-sizing: border-box;
 }
 
+header {
+  margin-top: 10px;
+}
+
 .main-container {
   width: 50%;
   margin: 0 auto;
   text-align: center;
 }
 
-.header {
+.heading {
   font-size: 50px;
   padding: 20px;
 }

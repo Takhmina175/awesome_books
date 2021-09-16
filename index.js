@@ -1,9 +1,15 @@
 const library = new Library();// eslint-disable-line no-undef
+const mainContainer = document.querySelector('.main-container');
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
 const ul = document.createElement('ul');
+const addNew = document.getElementById('addNew');
+const title = document.querySelector('.heading');
+const hr = document.querySelector('hr');
+
+console.log(mainContainer.firstElementChild.nextElementSibling.nextElementSibling);
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -54,3 +60,22 @@ ul.addEventListener('click', (e) => {
     location.reload(); // eslint-disable-line no-restricted-globals
   }
 });
+
+addNew.addEventListener('click', (e) => {
+  e.preventDefault();
+// bookContainer
+// title
+// hr
+  const targetDiv = mainContainer.lastElementChild;
+  const targetTitle = mainContainer.firstElementChild;
+  const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling; 
+  if (targetDiv.style.display !== 'none' && targetTitle.style.display === 'block' && targetHr.style.display === 'block') {
+    targetDiv.style.display = 'none';
+    targetTitle.style.display = 'block';
+    targetHr.style.display = 'block';
+  } else {
+    targetDiv.style.display = 'block';
+    targetTitle.style.display = 'none';
+    targetHr.style.display = 'none';
+  }
+})
