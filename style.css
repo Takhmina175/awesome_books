@@ -66,3 +66,27 @@ li:nth-child(odd) {
   margin: 10px auto;
   border: 1px solid black;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.main-nav > a {
+  text-decoration: none;
+}
+
+.main-nav:last-child {
+  border-right: none;
+}
