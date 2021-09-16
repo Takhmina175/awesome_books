@@ -1,3 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+input {
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  border: 1px solid #222;
+}
+
+form {
+  position: relative;
+  width: 32%;
+  margin: 0 auto;
+}
+
+#add-btn {
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  padding: 7px;
+}
+
+hr {
+  width: 20%;
+  margin: 20px auto;
+  border: 1px solid black;
+}
+
 .styleInput {
   margin: 6px auto;
 }
