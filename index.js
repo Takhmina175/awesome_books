@@ -8,8 +8,8 @@ const ul = document.createElement('ul');
 const addNew = document.getElementById('addNew');
 const title = document.querySelector('.heading');
 const hr = document.querySelector('hr');
+const list = document.getElementById('list');
 
-console.log(mainContainer.firstElementChild.nextElementSibling.nextElementSibling);
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -60,22 +60,46 @@ ul.addEventListener('click', (e) => {
     location.reload(); // eslint-disable-line no-restricted-globals
   }
 });
-
+const targetForm = mainContainer.lastElementChild;
+const targetTitle = mainContainer.firstElementChild;
+const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling;
+const targetBookList = mainContainer.firstElementChild.nextElementSibling;
 addNew.addEventListener('click', (e) => {
   e.preventDefault();
-// bookContainer
-// title
-// hr
-  const targetDiv = mainContainer.lastElementChild;
-  const targetTitle = mainContainer.firstElementChild;
-  const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling; 
-  if (targetDiv.style.display !== 'none' && targetTitle.style.display === 'block' && targetHr.style.display === 'block') {
-    targetDiv.style.display = 'none';
+  if (
+    targetForm.style.display !== 'none'
+    && targetTitle.style.display === 'block'
+    && targetHr.style.display === 'block'
+  ) {
+    targetForm.style.display = 'none';
     targetTitle.style.display = 'block';
     targetHr.style.display = 'block';
   } else {
-    targetDiv.style.display = 'block';
+    targetForm.style.display = 'block';
     targetTitle.style.display = 'none';
     targetHr.style.display = 'none';
   }
-})
+});
+console.log(targetBookList, targetTitle, targetHr);
+console.log(targetForm);
+
+list.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (
+    targetBookList.style.display !== "none" &&
+    targetTitle.style.display !== "none" &&
+    targetHr.style.display === "block" &&
+    targetForm.style.display === "block"
+  ) {
+    targetTitle.style.display = "block";
+    targetBookList.style.display = "block";
+    targetHr.style.display = "none";
+    targetForm.style.display = "none";
+  } else {
+    targetForm.style.display = "block";
+    targetBookList.style.display = "none";
+    targetTitle.style.display = "none";
+    targetHr.style.display = "block";
+  }
+
+});
