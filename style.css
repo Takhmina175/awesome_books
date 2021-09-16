@@ -26,7 +26,7 @@ form {
 #add-btn {
   font-size: 16px;
   position: absolute;
-  right: 69px;
+  right: 13px;
   padding: 7px;
 }
 
@@ -47,9 +47,10 @@ li {
   padding: 5px;
 }
 
-li:nth-child(odd){
+li:nth-child(odd) {
   background-color: #ccc;
 }
+
 .bookDiv {
   display: flex;
   gap: 5px;

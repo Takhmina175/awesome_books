@@ -26,7 +26,12 @@ function createBook({ title, author }) {
   listItem.append(bookDiv, btnDiv);
   ul.appendChild(listItem);
   bookContainer.appendChild(ul);
+
+  bookContainer.style.display = library.books.length === 0 ? 'none' : 'block';
 }
+
+bookContainer.style.display = library.books.length === 0 ? 'none' : 'block';
+
 library.renderBooks();
 addBtn.onclick = (e) => {
   e.preventDefault();
@@ -43,6 +48,7 @@ ul.addEventListener('click', (e) => {
   const item2BeRemoved = e.target.parentElement.parentElement;
   const nodes = Array.from(ul.children);
   const index = nodes.indexOf(item2BeRemoved);
+
   if (classesArray.indexOf('delete') !== -1) {
     library.deleteBook(index);
     location.reload(); // eslint-disable-line no-restricted-globals
