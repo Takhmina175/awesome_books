@@ -19,15 +19,14 @@ input {
 
 form {
   position: relative;
-  width: 32%;
+  width: 35%;
   margin: 0 auto;
 }
 
 #add-btn {
   font-size: 16px;
   position: absolute;
-  right: 0;
-  bottom: -40px;
+  right: 69px;
   padding: 7px;
 }
 
@@ -43,4 +42,21 @@ hr {
 
 li {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+li:nth-child(odd){
+  background-color: #ccc;
+}
+.bookDiv {
+  display: flex;
+  gap: 5px;
+}
+
+#ptext {
+  width: 64%;
+  margin: 10px auto;
+  border: 1px solid black;
 }
