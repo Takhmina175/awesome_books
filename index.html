@@ -15,24 +15,31 @@
       </div>
 
       <div class="main-nav">
-        <a href="#list" id='list'>List</a> |
-        <a href="#AddNew" id='addNew'>Add New</a> |
-        <a href="#Contact" id='contact'>Contact</a>
+        <button id="listEl">List</button>
+        <button id="addNew">Add new</button>
+        <button id="contactInfo">Contact</button>
       </div>
     </nav>
   </header>
-  <main class="mt-5 main-container">
-    <h3 class="heading text-center">All awesome Books</h3>
-    <div class="text-center" id="ptext"></div>
-    <hr>
-  <div class="bookList">
-    <form>
-      <h3>Add a new book</h3>
-      <input type="text" id="title" placeholder="title" class="styleInput"><br>
-      <input type="text" id="author" placeholder="author" class="styleInput" ><br>
-      <button id="add-btn">Add</button>
-    </form>
-  </div>
+  <main class="main-container">
+    <div id="divList">
+      <h3 class="heading text-center">All awesome Books</h3>
+      <div class="text-center" id="ptext"></div>
+    </div>
+ 
+    <div class="bookList" id="addBook">
+      <form>
+        <h3>Add a new book</h3>
+        <input type="text" id="title" placeholder="title" class="styleInput"><br>
+        <input type="text" id="author" placeholder="author" class="styleInput" ><br>
+        <button id="add-btn">Add</button>
+      </form>
+    </div>
+
+    <div id="contact">
+      <h4>Contact Information</h4>
+    </div>
+  </main>
   <script src="book.js"></script>
   <script src="library.js"></script>
   <script src="dom.js"></script>

@@ -1,15 +1,14 @@
 const library = new Library();// eslint-disable-line no-undef
-const mainContainer = document.querySelector('.main-container');
+// const mainContainer = document.querySelector('.main-container');
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
 const ul = document.createElement('ul');
-const addNew = document.getElementById('addNew');
-const title = document.querySelector('.heading');
-const hr = document.querySelector('hr');
-const list = document.getElementById('list');
-
+// const addNew = document.getElementById('addNew');
+// const title = document.querySelector('.heading');
+// const hr = document.querySelector('hr');
+// const list = document.getElementById('list');
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -50,56 +49,35 @@ addBtn.onclick = (e) => {
 
 ul.addEventListener('click', (e) => {
   const classes = e.target.className;
-  const classesArray = classes.split(' ');
+  const getClasses = classes.split(' ');
   const item2BeRemoved = e.target.parentElement.parentElement;
   const nodes = Array.from(ul.children);
   const index = nodes.indexOf(item2BeRemoved);
 
-  if (classesArray.indexOf('delete') !== -1) {
+  if (getClasses.indexOf('delete') !== -1) {
     library.deleteBook(index);
     location.reload(); // eslint-disable-line no-restricted-globals
-  }
+  } 
 });
-const targetForm = mainContainer.lastElementChild;
-const targetTitle = mainContainer.firstElementChild;
-const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling;
-const targetBookList = mainContainer.firstElementChild.nextElementSibling;
-addNew.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (
-    targetForm.style.display !== 'none'
-    && targetTitle.style.display === 'block'
-    && targetHr.style.display === 'block'
-  ) {
-    targetForm.style.display = 'none';
-    targetTitle.style.display = 'block';
-    targetHr.style.display = 'block';
-  } else {
-    targetForm.style.display = 'block';
-    targetTitle.style.display = 'none';
-    targetHr.style.display = 'none';
-  }
+// const targetForm = mainContainer.lastElementChild;
+// const targetTitle = mainContainer.firstElementChild;
+// const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling;
+// const targetBookList = mainContainer.firstElementChild.nextElementSibling;
+
+document.getElementById('listEl').addEventListener('click', () => {
+  document.getElementById('divList').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
+  document.getElementById('contact').style.display = 'none';
 });
-console.log(targetBookList, targetTitle, targetHr);
-console.log(targetForm);
 
-list.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (
-    targetBookList.style.display !== "none" &&
-    targetTitle.style.display !== "none" &&
-    targetHr.style.display === "block" &&
-    targetForm.style.display === "block"
-  ) {
-    targetTitle.style.display = "block";
-    targetBookList.style.display = "block";
-    targetHr.style.display = "none";
-    targetForm.style.display = "none";
-  } else {
-    targetForm.style.display = "block";
-    targetBookList.style.display = "none";
-    targetTitle.style.display = "none";
-    targetHr.style.display = "block";
-  }
+document.getElementById('addNew').addEventListener('click', () => {
+  document.getElementById('divList').style.display = 'none';
+  document.getElementById('addBook').style.display = 'block';
+  document.getElementById('contact').style.display = 'none';
+});
 
+document.getElementById('contactInfo').addEventListener('click', () => {
+  document.getElementById('divList').style.display = 'none';
+  document.getElementById('contact').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
 });
