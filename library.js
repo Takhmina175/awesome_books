@@ -18,9 +18,4 @@ class Library {// eslint-disable-line no-unused-vars
   renderBooks() {
     this.books.forEach(createBook); // eslint-disable-line no-undef
   }
-  
-  displayDate() {
-    this.date = Date();
-    return date.toString();
-  }
 }

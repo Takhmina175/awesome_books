@@ -48,9 +48,13 @@ addBtn.onclick = (e) => {
   } else {
     if (titleValidityState.valueMissing) {
       titleInput.setCustomValidity('Cannot be blank');
+    } else {
+      titleInput.setCustomValidity('');
     }
     if (authorValidityState.valueMissing) {
       authorInput.setCustomValidity('Cannot be blank');
+    } else {
+      authorInput.setCustomValidity('');
     }
     authorInput.reportValidity();
     titleInput.reportValidity();
