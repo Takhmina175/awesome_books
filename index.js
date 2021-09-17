@@ -64,6 +64,12 @@ ul.addEventListener('click', (e) => {
 // const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling;
 // const targetBookList = mainContainer.firstElementChild.nextElementSibling;
 
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('divList').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
+  document.getElementById('contact').style.display = 'none';
+})
+
 document.getElementById('listEl').addEventListener('click', () => {
   document.getElementById('divList').style.display = 'block';
   document.getElementById('addBook').style.display = 'none';

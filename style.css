@@ -29,7 +29,7 @@ input {
 form {
   position: relative;
   width: 35%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 #add-btn {
@@ -93,4 +93,8 @@ li:nth-child(odd) {
 
 .main-nav:last-child {
   border-right: none;
+}
+
+#contact {
+  margin-top: 50px;
 }
