@@ -1,14 +1,10 @@
 const library = new Library();// eslint-disable-line no-undef
-// const mainContainer = document.querySelector('.main-container');
+
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
 const ul = document.createElement('ul');
-// const addNew = document.getElementById('addNew');
-// const title = document.querySelector('.heading');
-// const hr = document.querySelector('hr');
-// const list = document.getElementById('list');
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -40,11 +36,25 @@ bookContainer.style.display = library.books.length === 0 ? 'none' : 'block';
 library.renderBooks();
 addBtn.onclick = (e) => {
   e.preventDefault();
-  const newBook = library.addBook(titleInput.value, authorInput.value);
-  createBook(newBook);
-  titleInput.value = '';
-  authorInput.value = '';
-  titleInput.focus();
+  const titleValidityState = titleInput.validity;
+  const authorValidityState = authorInput.validity;
+
+  if (titleInput.value.length > 0 && authorInput.value.length > 0) {
+    const newBook = library.addBook(titleInput.value, authorInput.value);
+    createBook(newBook);
+    titleInput.value = '';
+    authorInput.value = '';
+    titleInput.focus();
+  } else {
+    if (titleValidityState.valueMissing) {
+      titleInput.setCustomValidity('Cannot be blank');
+    }
+    if (authorValidityState.valueMissing) {
+      authorInput.setCustomValidity('Cannot be blank');
+    }
+    authorInput.reportValidity();
+    titleInput.reportValidity();
+  }
 };
 
 ul.addEventListener('click', (e) => {
@@ -59,10 +69,12 @@ ul.addEventListener('click', (e) => {
     location.reload(); // eslint-disable-line no-restricted-globals
   }
 });
-// const targetForm = mainContainer.lastElementChild;
-// const targetTitle = mainContainer.firstElementChild;
-// const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling;
-// const targetBookList = mainContainer.firstElementChild.nextElementSibling;
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('divList').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
+  document.getElementById('contact').style.display = 'none';
+});
 
 document.getElementById('listEl').addEventListener('click', () => {
   document.getElementById('divList').style.display = 'block';

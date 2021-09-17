@@ -29,7 +29,7 @@ input {
 form {
   position: relative;
   width: 35%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 #add-btn {
@@ -93,4 +93,30 @@ li:nth-child(odd) {
 
 .main-nav:last-child {
   border-right: none;
+}
+
+#contact {
+  margin-top: 50px;
+}
+
+.f{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 33%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  margin: 0 auto;
+  left: 35%;
+
+}
+
+#listEl,
+#addNew,
+#contactInfo {
+  background-color: white;
+  border: none;
 }
