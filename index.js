@@ -57,7 +57,7 @@ ul.addEventListener('click', (e) => {
   if (getClasses.indexOf('delete') !== -1) {
     library.deleteBook(index);
     location.reload(); // eslint-disable-line no-restricted-globals
-  } 
+  }
 });
 // const targetForm = mainContainer.lastElementChild;
 // const targetTitle = mainContainer.firstElementChild;
