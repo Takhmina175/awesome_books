@@ -57,13 +57,12 @@ ul.addEventListener('click', (e) => {
   if (getClasses.indexOf('delete') !== -1) {
     library.deleteBook(index);
     location.reload(); // eslint-disable-line no-restricted-globals
-  } 
+  }
 });
 // const targetForm = mainContainer.lastElementChild;
 // const targetTitle = mainContainer.firstElementChild;
 // const targetHr = mainContainer.firstElementChild.nextElementSibling.nextElementSibling;
 // const targetBookList = mainContainer.firstElementChild.nextElementSibling;
-
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('divList').style.display = 'block';
   document.getElementById('addBook').style.display = 'none';
