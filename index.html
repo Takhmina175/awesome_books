@@ -1,58 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Awsome Books</title>
-</head>
-<body>
-  <header>
-    <nav class="navbar">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div>
+          <h3>Awsome Books</h3>
+        </div>
+
+        <div class="main-nav">
+          <button id="listEl">List</button> |
+          <button id="addNew">Add new</button> |
+          <button id="contactInfo">Contact</button>
+        </div>
+      </nav>
       <div>
-        <h3>Awsome Books</h3>
+        <span id="luxonDate" class="">luxonDate</span> 
+      </div>
+    </header>
+    <div class="dateTime"></div>
+    <main class="main-container">
+      <div id="divList">
+        <h3 class="heading text-center">All awesome Books</h3>
+        <div class="text-center" id="ptext"></div>
       </div>
 
-      <div class="main-nav">
-        <button id="listEl">List</button> |
-        <button id="addNew">Add new</button> |
-        <button id="contactInfo">Contact</button>
+      <div class="bookList" id="addBook">
+        <form>
+          <h3>Add a new book</h3>
+          <input
+            type="text"
+            id="title"
+            placeholder="title"
+            class="styleInput"
+            required
+          /><br />
+          <input
+            type="text"
+            id="author"
+            placeholder="author"
+            class="styleInput"
+            required
+          /><br />
+          <button id="add-btn">Add</button>
+        </form>
       </div>
-    </nav>
-  </header>
-  <div class="dateTime"></div>
-  <main class="main-container">
-    <div id="divList">
-      <h3 class="heading text-center">All awesome Books</h3>
-      <div class="text-center" id="ptext"></div>
-    </div>
- 
-    <div class="bookList" id="addBook">
-      <form>
-        <h3>Add a new book</h3>
-        <input type="text" id="title" placeholder="title" class="styleInput" required><br>
-        <input type="text" id="author" placeholder="author" class="styleInput" required><br>
-        <button id="add-btn">Add</button>
-      </form>
-    </div>
 
-    <div id="contact">
-      <h2>Contact Information</h2>
-      <h4>Do you have any questions or you just want to say 'Hello'</h4>
-      <h4>You can reach out to us!</h4>
-      <p>Our email qoosim.mina@gmail.com</p>
-      <p>Our phone numbers +234-89978888, +556-78787388</p>
-      <p>Our address Flat 001 freetown city.</p>
-    </div>
-  </main>
-  <footer class="ft">
-    <div class="f">
-      <p>Copyright &copy; AwesomeBooks 2021</p>
-    </div>
-  </footer>
-  <script src="book.js"></script>
-  <script src="library.js"></script>
-  <script src="index.js"></script>
-</body>
+      <div id="contact">
+        <h2>Contact Information</h2>
+        <h4>Do you have any questions or you just want to say 'Hello'</h4>
+        <h4>You can reach out to us!</h4>
+        <p>Our email qoosim.mina@gmail.com</p>
+        <p>Our phone numbers +234-89978888, +556-78787388</p>
+        <p>Our address Flat 001 freetown city.</p>
+      </div>
+    </main>
+    <footer class="ft">
+      <div class="f">
+        <p>Copyright &copy; AwesomeBooks 2021</p>
+      </div>
+    </footer>
+    <script src="luxon.js"></script>
+    <script src="book.js"></script>
+    <script src="library.js"></script>
+    <script src="index.js"></script>
+    
+   
+
+    
+  </body>
 </html>

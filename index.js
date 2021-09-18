@@ -1,10 +1,15 @@
-const library = new Library();// eslint-disable-line no-undef
+const library = new Library(); // eslint-disable-line no-undef
+const { DateTime } = luxon;// eslint-disable-line no-undef
 
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
 const ul = document.createElement('ul');
+
+const dateTime = DateTime.now();
+
+document.getElementById('luxonDate').innerHTML = dateTime.toISO();
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -34,6 +39,7 @@ function createBook({ title, author }) {
 bookContainer.style.display = library.books.length === 0 ? 'none' : 'block';
 
 library.renderBooks();
+
 addBtn.onclick = (e) => {
   e.preventDefault();
   const titleValidityState = titleInput.validity;

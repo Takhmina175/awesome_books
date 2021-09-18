@@ -118,3 +118,11 @@ li:nth-child(odd) {
   background-color: white;
   border: none;
 }
+
+#luxonDate {
+  display: flex;
+  justify-content: end;
+  padding-top: 10px;
+  width: 35%;
+  margin: 0 auto;
+}
