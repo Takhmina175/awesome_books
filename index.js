@@ -1,9 +1,15 @@
-const library = new Library();// eslint-disable-line no-undef
+const library = new Library(); // eslint-disable-line no-undef
+const { DateTime } = luxon;// eslint-disable-line no-undef
+
 const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const bookContainer = document.querySelector('#ptext');
 const addBtn = document.getElementById('add-btn');
 const ul = document.createElement('ul');
+
+const dateTime = DateTime.now();
+
+document.getElementById('luxonDate').innerHTML = dateTime.toISO();
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -33,24 +39,67 @@ function createBook({ title, author }) {
 bookContainer.style.display = library.books.length === 0 ? 'none' : 'block';
 
 library.renderBooks();
+
 addBtn.onclick = (e) => {
   e.preventDefault();
-  const newBook = library.addBook(titleInput.value, authorInput.value);
-  createBook(newBook);
-  titleInput.value = '';
-  authorInput.value = '';
-  titleInput.focus();
+  const titleValidityState = titleInput.validity;
+  const authorValidityState = authorInput.validity;
+
+  if (titleInput.value.length > 0 && authorInput.value.length > 0) {
+    const newBook = library.addBook(titleInput.value, authorInput.value);
+    createBook(newBook);
+    titleInput.value = '';
+    authorInput.value = '';
+    titleInput.focus();
+  } else {
+    if (titleValidityState.valueMissing) {
+      titleInput.setCustomValidity('Cannot be blank');
+    } else {
+      titleInput.setCustomValidity('');
+    }
+    if (authorValidityState.valueMissing) {
+      authorInput.setCustomValidity('Cannot be blank');
+    } else {
+      authorInput.setCustomValidity('');
+    }
+    authorInput.reportValidity();
+    titleInput.reportValidity();
+  }
 };
 
 ul.addEventListener('click', (e) => {
   const classes = e.target.className;
-  const classesArray = classes.split(' ');
+  const getClasses = classes.split(' ');
   const item2BeRemoved = e.target.parentElement.parentElement;
   const nodes = Array.from(ul.children);
   const index = nodes.indexOf(item2BeRemoved);
 
-  if (classesArray.indexOf('delete') !== -1) {
+  if (getClasses.indexOf('delete') !== -1) {
     library.deleteBook(index);
     location.reload(); // eslint-disable-line no-restricted-globals
   }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('divList').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
+  document.getElementById('contact').style.display = 'none';
+});
+
+document.getElementById('listEl').addEventListener('click', () => {
+  document.getElementById('divList').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
+  document.getElementById('contact').style.display = 'none';
+});
+
+document.getElementById('addNew').addEventListener('click', () => {
+  document.getElementById('divList').style.display = 'none';
+  document.getElementById('addBook').style.display = 'block';
+  document.getElementById('contact').style.display = 'none';
+});
+
+document.getElementById('contactInfo').addEventListener('click', () => {
+  document.getElementById('divList').style.display = 'none';
+  document.getElementById('contact').style.display = 'block';
+  document.getElementById('addBook').style.display = 'none';
 });

@@ -4,13 +4,17 @@
   box-sizing: border-box;
 }
 
+header {
+  margin-top: 10px;
+}
+
 .main-container {
   width: 50%;
   margin: 0 auto;
   text-align: center;
 }
 
-.header {
+.heading {
   font-size: 50px;
   padding: 20px;
 }
@@ -25,7 +29,7 @@ input {
 form {
   position: relative;
   width: 35%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 #add-btn {
@@ -65,4 +69,60 @@ li:nth-child(odd) {
   width: 64%;
   margin: 10px auto;
   border: 1px solid black;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.main-nav > a {
+  text-decoration: none;
+}
+
+.main-nav:last-child {
+  border-right: none;
+}
+
+#contact {
+  margin-top: 50px;
+}
+
+.f {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 33%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 35%;
+}
+
+#listEl,
+#addNew,
+#contactInfo {
+  background-color: white;
+  border: none;
+}
+
+#luxonDate {
+  display: flex;
+  justify-content: end;
+  padding-top: 10px;
+  width: 35%;
+  margin: 0 auto;
 }
