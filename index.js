@@ -8,8 +8,9 @@ const addBtn = document.getElementById('add-btn');
 const ul = document.createElement('ul');
 
 const dateTime = DateTime.now();
-
-document.getElementById('luxonDate').innerHTML = dateTime.toISO();
+const dateText = dateTime.toLocaleString(DateTime.DATETIME_MED);
+const spanForText = document.querySelector('#luxonDate');
+spanForText.textContent = dateText;
 
 function createBook({ title, author }) {
   const listItem = document.createElement('li');
@@ -54,13 +55,9 @@ addBtn.onclick = (e) => {
   } else {
     if (titleValidityState.valueMissing) {
       titleInput.setCustomValidity('Cannot be blank');
-    } else {
-      titleInput.setCustomValidity('');
     }
     if (authorValidityState.valueMissing) {
       authorInput.setCustomValidity('Cannot be blank');
-    } else {
-      authorInput.setCustomValidity('');
     }
     authorInput.reportValidity();
     titleInput.reportValidity();
